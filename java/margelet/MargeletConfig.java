@@ -40,7 +40,7 @@ public class MargeletConfig {
      * 0.99, а не 1.0, нарочно: настоящая единица должна остаться свободной
      * под настоящий выпуск, а пререлиз обязан быть строго меньше её.
      */
-    public static final String APP_VERSION = "0.99.30";
+    public static final String APP_VERSION = "0.99.31";
 
     /**
      * Как выпуск называется для человека: «Пререлиз 1.0.23».
@@ -378,7 +378,7 @@ public class MargeletConfig {
     // --- встроенный прокси ---
 
     public static boolean proxyEnabled() {
-        return prefs().getBoolean("proxy_enabled", false);
+        return prefs().getBoolean("proxy_enabled", true);
     }
 
     public static void setProxyEnabled(boolean enabled) {

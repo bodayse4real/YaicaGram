@@ -1702,7 +1702,7 @@ index 000000000..727ca6110
 +     * 0.99, а не 1.0, нарочно: настоящая единица должна остаться свободной
 +     * под настоящий выпуск, а пререлиз обязан быть строго меньше её.
 +     */
-+    public static final String APP_VERSION = "0.99.30";
++    public static final String APP_VERSION = "0.99.31";
 +
 +    /**
 +     * Как выпуск называется для человека: «Пререлиз 1.0.23».
@@ -2042,7 +2042,7 @@ index 000000000..727ca6110
 +    // --- встроенный прокси ---
 +
 +    public static boolean proxyEnabled() {
-+        return prefs().getBoolean("proxy_enabled", false);
++        return prefs().getBoolean("proxy_enabled", true);
 +    }
 +
 +    public static void setProxyEnabled(boolean enabled) {
@@ -39616,7 +39616,7 @@ index 38299bed6..ca44a3137 100644
  # org.gradle.parallel=true
  #Sat Mar 12 05:53:50 MSK 2016
 -APP_VERSION_CODE=7038
-+APP_VERSION_CODE=7066
++APP_VERSION_CODE=7067
  APP_VERSION_NAME=12.10.1
 -APP_PACKAGE=org.telegram.messenger
 +APP_PACKAGE=cat.bodayse.yaicagram

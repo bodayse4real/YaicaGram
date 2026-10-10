@@ -1,7 +1,7 @@
 {
-  "version": "0.99.30",
-  "apk": "https://github.com/bodayse4real/YaicaGram/raw/apk/yaicagram-0.99.30.apk",
-  "about": "YaicaGram pre-release 1.0.30 based on Telegram 12.10.1 with extra tweaks and features: unlimited input lines, streamer mode, deleted gifts, music tags, egg themes and Easter eggs, built-in MTProto WebSocket proxy, and Python plugin engine.",
-  "about_ru": "Пререлиз YaicaGram 1.0.30 на базе Telegram 12.10.1 с расширенными настройками: настраиваемое поле ввода, режим стримера, удалённые подарки, теги для музыки, фирменная тема «Яйцо» и пасхалки, встроенный прокси и поддержка плагинов на Python.",
-  "about_zh": "YaicaGram 预发布 1.0.30，基于 Telegram 12.10.1：自定义输入框、主播模式、已删除礼物、音乐标签、特色鸡蛋主题与彩蛋、内置代理和 Python 插件引擎。"
+  "version": "0.99.31",
+  "apk": "https://github.com/bodayse4real/YaicaGram/releases/download/v0.99.31/YaicaGram-0.99.31.apk",
+  "about": "YaicaGram 0.99.31 (1.0.31): Built-in WebSocket proxy enabled by default for instant connection without VPN in Russia.",
+  "about_ru": "Пререлиз YaicaGram 1.0.31: Встроенный WebSocket-прокси включен по умолчанию для мгновенного входа и работы без VPN в РФ.",
+  "about_zh": "YaicaGram 预发布 1.0.31：默认启用内置 WebSocket 代理，无需 VPN 即可即时连接与登录。"
 }

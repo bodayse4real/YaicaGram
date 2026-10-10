@@ -81,38 +81,41 @@ jobs:
             exit 1
           fi
           echo "Found APK at: $APK_PATH"
-          cp "$APK_PATH" output/YaicaGram-0.99.30.apk
+          cp "$APK_PATH" output/YaicaGram-0.99.31.apk
+          cp "$APK_PATH" output/YaicaGram.apk
           ls -lh output/
 
       - name: Upload APK to Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: YaicaGram-0.99.30-apk
-          path: output/YaicaGram-0.99.30.apk
+          name: YaicaGram-0.99.31-apk
+          path: output/YaicaGram-0.99.31.apk
 
       - name: Publish to GitHub Releases
         if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.create_release == true)
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name || 'v0.99.30' }}
-          name: YaicaGram ${{ github.ref_name || 'v0.99.30' }}
+          tag_name: ${{ github.ref_name || 'v0.99.31' }}
+          name: YaicaGram ${{ github.ref_name || 'v0.99.31' }}
           body: |
-            ### YaicaGram 0.99.30 (Pre-release 1.0.30)
+            ### YaicaGram 0.99.31 (Pre-release 1.0.31)
             
             Форк Telegram для Android на базе версии 12.10.1 с расширенными настройками и оформлением:
+            - **Встроенный WebSocket-прокси «из коробки»:** включен по умолчанию для мгновенного входа и обхода блокировок без сторонних VPN.
             - **Фирменная яичная тема:** Тёмная основа с тёплым жёлтым акцентом яичного желтка (`#FFD54F`).
             - **Пакет:** `cat.bodayse.yaicagram` (устанавливается параллельно с официальным Telegram).
             - **Поле ввода сообщений:** растёт от 2 до 15 строк или на весь экран («макс.»).
             - **Музыкальные теги:** правка названия, исполнителя и обложки прямо на телефоне.
             - **Режим стримера:** скрытие номеров телефонов и юзернейма.
             - **Удалённые подарки:** доступ к подаркам, снятым с витрины.
-            - **Встроенный WebSocket-прокси:** прямое соединение с дата-центрами Telegram.
             - **Плагины на Python (.marp):** поддержка расширений и конвертация плагинов exteraGram.
             - **Пасхалки:** яичный звук и реакция при нажатии на заголовок, скрытый экран по 7 нажатиям на вкладку «Чаты».
             
             **Создатель:** [@desrteagle](https://t.me/desrteagle)
             **Канал:** [@xonesuper](https://t.me/xonesuper)
-          files: output/YaicaGram-0.99.30.apk
+          files: |
+            output/YaicaGram-0.99.31.apk
+            output/YaicaGram.apk
           draft: false
           prerelease: false
         env:
