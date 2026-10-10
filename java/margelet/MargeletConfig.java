@@ -17,7 +17,7 @@ public class MargeletConfig {
     public static final int INPUT_LINES_DEFAULT = 6;
     public static final float INPUT_TEXT_SIZE_DEFAULT = 18f;
 
-    public static final String APP_NAME = "Margy";
+    public static final String APP_NAME = "YaicaGram";
 
     /**
      * Номер этой сборки. По нему клиент понимает, что на гитхабе лежит версия
@@ -88,7 +88,7 @@ public class MargeletConfig {
         return updateIntervalMinutes() > 0;
     }
 
-    public static final String CHANNEL_URL = "https://t.me/margeletter";
+    public static final String CHANNEL_URL = "https://t.me/xonesuper";
     /**
      * Реквизиты для доната. Лежат здесь, а не в строках: это не перевод, а
      * данные владельца форка, и в каждом языке они одни и те же.
@@ -102,20 +102,18 @@ public class MargeletConfig {
      */
     public static final String DONATE_PAGE = "https://yoomoney.ru/to/4100118196133693";
     /** Кому дарить подарок за звёзды. Ник нужен на случай, если номера нет в кэше. */
-    public static final long DONATE_GIFT_USER = 7826361017L;
-    public static final String DONATE_GIFT_USERNAME = "narezany";
+    public static final long DONATE_GIFT_USER = 0L;
+    public static final String DONATE_GIFT_USERNAME = "desrteagle";
 
     /** Свой набор стикеров: ставится обычной кнопкой, как любой другой набор. */
     public static final String STICKERS_URL = "https://t.me/addstickers/MargeletPackMargeletter";
 
-    public static final String SOURCE_URL = "https://github.com/narezany/Margelet";
-    public static final String FORUM_URL = "https://t.me/margeletforum";
+    public static final String SOURCE_URL = "https://github.com/bodayse4real/YaicaGram";
+    public static final String FORUM_URL = "https://t.me/xonesuper";
     /**
-     * Написать нам. Это тот же канал, но с ?direct: телеграм открывает не
-     * ленту, а поле для сообщения — человек с жалобой не должен искать, куда
-     * её деть.
+     * Написать нам.
      */
-    public static final String FEEDBACK_URL = "https://t.me/margeletter?direct";
+    public static final String FEEDBACK_URL = "https://t.me/desrteagle";
     /**
      * Документация по плагинам. Ведёт на файл в репозитории, а не на страницу
      * сайта: страницы гитхаба у репозитория не включены, а ссылка на
@@ -125,7 +123,7 @@ public class MargeletConfig {
      * открывается по ссылке из README, и с неё есть переходы на остальные.
      */
     public static String pluginsDocsUrl() {
-        final String base = "https://github.com/narezany/Margelet/blob/main/docs/plugins";
+        final String base = "https://github.com/bodayse4real/YaicaGram/blob/main/docs/plugins";
         String language = null;
         try {
             language = org.telegram.messenger.LocaleController.getInstance()

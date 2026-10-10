@@ -183,7 +183,7 @@ messageEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, MargeletConfig.inputTex
 `standalone`: у `:jlatexmath` такого типа нет, и без подмены не разрешаются
 зависимости.
 
-**`gradle.properties`** — `APP_PACKAGE=cat.narezany.margelet`, суффикс `.web` у
+**`gradle.properties`** — `APP_PACKAGE=cat.bodayse.yaicagram`, суффикс `.web` у
 standalone убран.
 
 **`TMessagesProj_AppStandalone/build.gradle`** — плагин
@@ -667,7 +667,7 @@ standalone убран.
 Оба промаха поймала модель формата на питоне (`tools/markup_model.py`): семь
 случаев, два провала за два прогона, оба до сборки.
 
-**Заголовок** `<! Message looks better with @margeletter! >` ставится в **конец**
+**Заголовок** `<! Message looks better with @xonesuper! >` ставится в **конец**
 сообщения: из начала он лезет в уведомления и в список чатов, где от сообщения
 видна одна строка. В форке он спрятан — именно спрятан, разметкой нулевой
 ширины, а не вырезан: вырезание сдвинуло бы отсчёты жирного и ссылок, которые

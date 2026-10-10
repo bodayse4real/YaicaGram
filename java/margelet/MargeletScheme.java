@@ -263,7 +263,7 @@ public class MargeletScheme {
      * Стена: своя, если ничего не дописано, иначе чужая.
      *
      * Дописать можно номер («margy://wall/12345») или ник
-     * («margy://wall/@narezany»). Ник сперва надо превратить в номер, а это
+     * («margy://wall/@desrteagle»). Ник сперва надо превратить в номер, а это
      * поездка на сервер, поэтому открытие ждёт ответа.
      */
     private static void wall(BaseFragment from, String arg) {

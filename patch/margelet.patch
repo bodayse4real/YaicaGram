@@ -651,17 +651,17 @@ index 000000000..d0eb7b3c6
 +     */
 +    private static final Badge[] BUILT_IN = {
 +            // Владелец форка.
-+            new Badge(7826361017L, R.string.MargeletBadgeTitle, R.string.MargeletBadgeAbout,
-+                    0xFF8DD1B0, "https://t.me/narezanyinf"),
++            new Badge(0L, R.string.MargeletBadgeTitle, R.string.MargeletBadgeAbout,
++                    0xFFFFD54F, "https://t.me/desrteagle"),
 +            // Лучший друг владельца — по его собственной просьбе и его словами.
 +            new Badge(8675724972L, R.string.MargeletBadgeFriendTitle, R.string.MargeletBadgeFriendAbout,
 +                    0xFFB7A8E0, "https://t.me/mizoginichka_y"),
 +            // Свои площадки форка. Значок тут не украшение, а ответ на вопрос
 +            // «а это точно тот самый канал».
-+            new Badge(-4426743212L, R.string.MargeletBadgeChannelTitle, R.string.MargeletBadgeChannelAbout,
-+                    0xFF8DD1B0, MargeletConfig.CHANNEL_URL),
-+            new Badge(-4436273526L, R.string.MargeletBadgeForumTitle, R.string.MargeletBadgeForumAbout,
-+                    0xFF8DD1B0, MargeletConfig.FORUM_URL),
++            new Badge(-1L, R.string.MargeletBadgeChannelTitle, R.string.MargeletBadgeChannelAbout,
++                    0xFFFFD54F, MargeletConfig.CHANNEL_URL),
++            new Badge(-2L, R.string.MargeletBadgeForumTitle, R.string.MargeletBadgeForumAbout,
++                    0xFFFFD54F, MargeletConfig.FORUM_URL),
 +            // Чьи коты живут в приложении. Кнопки у этого значка нет: вести
 +            // некуда, он не про площадку, а про кота.
 +            new Badge(7826361017L, R.string.MargeletBadgeCatTitle, R.string.MargeletBadgeCatAbout,
@@ -1425,7 +1425,7 @@ index 000000000..a6f9b07d2
 +    private static final int[] PHOTOS = {R.drawable.margelet_cat_1, R.drawable.margelet_cat_2};
 +    private static final int[] NAMES = {R.string.MargeletCatOne, R.string.MargeletCatTwo};
 +    /** Кто принёс кота. Порядок тот же, что у фотографий. */
-+    private static final String[] FROM = {"@narezany", "@egorkagds"};
++    private static final String[] FROM = {"@desrteagle", "@egorkagds"};
 +
 +    private static final String FILE = "cats.json";
 +    private static final String CACHE_KEY = "cats";
@@ -1522,7 +1522,7 @@ index 000000000..a6f9b07d2
 +        return out;
 +    }
 +
-+    private static final String OWNER = "narezany";
++    private static final String OWNER = "desrteagle";
 +
 +    /** Сколько окно не принимает нажатий после открытия. */
 +    private static final long DEAF_MS = 500;
@@ -1679,7 +1679,7 @@ index 000000000..727ca6110
 +    public static final int INPUT_LINES_DEFAULT = 6;
 +    public static final float INPUT_TEXT_SIZE_DEFAULT = 18f;
 +
-+    public static final String APP_NAME = "Margy";
++    public static final String APP_NAME = "YaicaGram";
 +
 +    /**
 +     * Номер этой сборки. По нему клиент понимает, что на гитхабе лежит версия
@@ -1750,7 +1750,7 @@ index 000000000..727ca6110
 +        return updateIntervalMinutes() > 0;
 +    }
 +
-+    public static final String CHANNEL_URL = "https://t.me/margeletter";
++    public static final String CHANNEL_URL = "https://t.me/xonesuper";
 +    /**
 +     * Реквизиты для доната. Лежат здесь, а не в строках: это не перевод, а
 +     * данные владельца форка, и в каждом языке они одни и те же.
@@ -1764,20 +1764,20 @@ index 000000000..727ca6110
 +     */
 +    public static final String DONATE_PAGE = "https://yoomoney.ru/to/4100118196133693";
 +    /** Кому дарить подарок за звёзды. Ник нужен на случай, если номера нет в кэше. */
-+    public static final long DONATE_GIFT_USER = 7826361017L;
-+    public static final String DONATE_GIFT_USERNAME = "narezany";
++    public static final long DONATE_GIFT_USER = 0L;
++    public static final String DONATE_GIFT_USERNAME = "desrteagle";
 +
 +    /** Свой набор стикеров: ставится обычной кнопкой, как любой другой набор. */
 +    public static final String STICKERS_URL = "https://t.me/addstickers/MargeletPackMargeletter";
 +
-+    public static final String SOURCE_URL = "https://github.com/narezany/Margelet";
-+    public static final String FORUM_URL = "https://t.me/margeletforum";
++    public static final String SOURCE_URL = "https://github.com/bodayse4real/YaicaGram";
++    public static final String FORUM_URL = "https://t.me/xonesuper";
 +    /**
 +     * Написать нам. Это тот же канал, но с ?direct: телеграм открывает не
 +     * ленту, а поле для сообщения — человек с жалобой не должен искать, куда
 +     * её деть.
 +     */
-+    public static final String FEEDBACK_URL = "https://t.me/margeletter?direct";
++    public static final String FEEDBACK_URL = "https://t.me/desrteagle";
 +    /**
 +     * Документация по плагинам. Ведёт на файл в репозитории, а не на страницу
 +     * сайта: страницы гитхаба у репозитория не включены, а ссылка на
@@ -1787,7 +1787,7 @@ index 000000000..727ca6110
 +     * открывается по ссылке из README, и с неё есть переходы на остальные.
 +     */
 +    public static String pluginsDocsUrl() {
-+        final String base = "https://github.com/narezany/Margelet/blob/main/docs/plugins";
++        final String base = "https://github.com/bodayse4real/YaicaGram/blob/main/docs/plugins";
 +        String language = null;
 +        try {
 +            language = org.telegram.messenger.LocaleController.getInstance()
@@ -8668,7 +8668,7 @@ index 000000000..865d80f77
 +
 +    /** Куда смотрим за файлами. Ветка main репозитория форка. */
 +    public static final String BASE =
-+            "https://raw.githubusercontent.com/narezany/margelet/main/";
++            "https://raw.githubusercontent.com/bodayse4real/YaicaGram/main/";
 +
 +    private static final String PREFS = "margelet_remote";
 +    /** Файлы здесь маленькие; всё, что больше, — уже не наш файл. */
@@ -9150,7 +9150,7 @@ index 000000000..b0df9ecdb
 +     * Стена: своя, если ничего не дописано, иначе чужая.
 +     *
 +     * Дописать можно номер («margy://wall/12345») или ник
-+     * («margy://wall/@narezany»). Ник сперва надо превратить в номер, а это
++     * («yaicagram://wall/@desrteagle»). Ник сперва надо превратить в номер, а это
 +     * поездка на сервер, поэтому открытие ждёт ответа.
 +     */
 +    private static void wall(BaseFragment from, String arg) {
@@ -10720,7 +10720,7 @@ index 000000000..dd5e0a34f
 + */
 +public class MargeletTheme {
 +
-+    private static final int GREEN_ACCENT_ID = 2;
++    private static final int EGG_ACCENT_ID = 3;
 +
 +    public static void applyOnFirstLaunch() {
 +        try {
@@ -10731,7 +10731,7 @@ index 000000000..dd5e0a34f
 +            if (night == null) {
 +                return;
 +            }
-+            night.setCurrentAccentId(GREEN_ACCENT_ID);
++            night.setCurrentAccentId(EGG_ACCENT_ID);
 +            Theme.saveThemeAccents(night, true, false, true, false);
 +            Theme.applyTheme(night);
 +        } catch (Exception e) {
@@ -16220,10 +16220,10 @@ index 000000000..3ced58676
 +                LocaleController.getString(R.string.MargeletDonateInfo)));
 +        items.add(SettingsActivity.SettingCell.Factory.of(ID_CHANNEL,
 +                IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom,
-+                R.drawable.settings_channel, LocaleController.getString(R.string.MargeletChannel), "t.me/margeletter"));
++                R.drawable.settings_channel, LocaleController.getString(R.string.MargeletChannel), "t.me/xonesuper"));
 +        items.add(SettingsActivity.SettingCell.Factory.of(ID_FORUM,
 +                IconBackgroundColors.ORANGE.top, IconBackgroundColors.ORANGE.bottom,
-+                R.drawable.settings_group, LocaleController.getString(R.string.MargeletForum), "t.me/margeletforum"));
++                R.drawable.settings_group, LocaleController.getString(R.string.MargeletForum), "t.me/xonesuper"));
 +        items.add(SettingsActivity.SettingCell.Factory.of(ID_FEEDBACK,
 +                IconBackgroundColors.PURPLE.top, IconBackgroundColors.PURPLE.bottom,
 +                R.drawable.msg_message, LocaleController.getString(R.string.MargeletFeedback),
@@ -23275,7 +23275,7 @@ index d3a1ae4cc..49936b155 100644
 \ No newline at end of file
 +<shape xmlns:android="http://schemas.android.com/apk/res/android"
 +    android:shape="rectangle">
-+    <solid android:color="#8DD1B0" />
++    <solid android:color="#FFD54F" />
 +</shape>
 diff --git a/TMessagesProj/src/main/res/drawable/margelet_background.xml b/TMessagesProj/src/main/res/drawable/margelet_background.xml
 new file mode 100644
@@ -23286,7 +23286,7 @@ index 000000000..49936b155
 +<?xml version="1.0" encoding="utf-8"?>
 +<shape xmlns:android="http://schemas.android.com/apk/res/android"
 +    android:shape="rectangle">
-+    <solid android:color="#8DD1B0" />
++    <solid android:color="#FFD54F" />
 +</shape>
 diff --git a/TMessagesProj/src/main/res/drawable/margelet_badge.xml b/TMessagesProj/src/main/res/drawable/margelet_badge.xml
 new file mode 100644
@@ -26742,8 +26742,8 @@ index 8b8700432..1a7748953 100644
  <resources>
 -    <string name="AppName">تيليجرام</string>
 -    <string name="AppNameBeta">(Beta) تيليجرام</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">العربية</string>
      <string name="English">الإنجليزية</string>
      <string name="LanguageNameInEnglish">Arabic</string>
@@ -26756,8 +26756,8 @@ index 9054784ad..7deb47846 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram Beta</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">Deutsch</string>
      <string name="English">Englisch</string>
      <string name="LanguageNameInEnglish">German</string>
@@ -26770,8 +26770,8 @@ index 4779808ea..59886589e 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram Beta</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">Español</string>
      <string name="English">Inglés</string>
      <string name="LanguageNameInEnglish">Spanish</string>
@@ -26784,8 +26784,8 @@ index 3e7688d9d..298175081 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram Beta</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">Italiano</string>
      <string name="English">Inglese</string>
      <string name="LanguageNameInEnglish">Italian</string>
@@ -26798,8 +26798,8 @@ index 6f75e2efd..154f648bd 100644
  <resources>
 -    <string name="AppName">텔레그램</string>
 -    <string name="AppNameBeta">텔레그램</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">한국어</string>
      <string name="English">영어</string>
      <string name="LanguageNameInEnglish">한국어</string>
@@ -26812,8 +26812,8 @@ index f3df87e85..e666ab3ff 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram-bèta</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">Nederlands</string>
      <string name="English">Engels</string>
      <string name="LanguageNameInEnglish">Dutch</string>
@@ -26826,8 +26826,8 @@ index 03d0ba337..17f98fa6e 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram Beta</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">Português (Brasil)</string>
      <string name="English">Inglês</string>
      <string name="LanguageNameInEnglish">Portuguese (Brazil)</string>
@@ -26840,8 +26840,8 @@ index 24c562920..2d8225dd3 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram Beta</string>
-+    <string name="AppName">Margy</string>
-+    <string name="AppNameBeta">Margy</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">Русский</string>
      <string name="English">Английский</string>
      <string name="LanguageNameInEnglish">Russian</string>
@@ -26849,11 +26849,11 @@ index 24c562920..2d8225dd3 100644
      <string name="RemindTodayAt">\'Отправить сегодня в\' HH:mm</string>
      <string name="RemindDayAt">\'Отправить\' d MMM \'в\' HH:mm</string>
      <string name="RemindDayYearAt">\'Напомнить\' d MMM yyyy \'в\' HH:mm</string>
-+    <string name="MargeletSettings">Настройки форка</string>
++    <string name="MargeletSettings">Настройки YaicaGram</string>
 +    <string name="MargeletInput">Поле ввода</string>
 +    <string name="MargeletInputInfo">Строки, размер текста, положение</string>
-+    <string name="MargeletSound">Звук</string>
-+    <string name="MargeletSoundInfo">Мяуканье на главном экране</string>
++    <string name="MargeletSound">Звук пасхалки</string>
++    <string name="MargeletSoundInfo">Звук яйца на главном экране</string>
 +    <string name="MargeletChannel">Канал</string>
 +    <string name="MargeletForum">Форум</string>
 +    <string name="MargeletTracks">Теги музыки</string>
@@ -26933,7 +26933,7 @@ index 24c562920..2d8225dd3 100644
 +    <string name="MargeletNextChat">Применяется к следующему открытому чату.</string>
 +    <string name="MargeletInputOnTop">Поле ввода сверху</string>
 +    <string name="MargeletInputOnTopAbout">Поле уезжает под шапку чата. Клавиатура и панели остаются внизу.\n\nПрименяется к следующему открытому чату.</string>
-+    <string name="MargeletMeow">Мяуканье</string>
++    <string name="MargeletMeow">Звук яйца</string>
 +    <string name="MargeletMeowAbout">Играет по нажатию на название на главном экране.</string>
 +    <string name="MargeletWhichSound">Какой звук</string>
 +    <string name="MargeletSoundBuiltIn">Стандартный</string>
@@ -26951,14 +26951,14 @@ index 24c562920..2d8225dd3 100644
 +    <string name="MargeletTrackWriteFailed">Не получилось записать теги в файл.</string>
 +    <string name="MargeletTracksEnabled">Теги музыки</string>
 +    <string name="MargeletTracksEnabledAbout">Добавляет «Теги трека» в меню музыкального сообщения. Файл должен быть скачан.</string>
-+    <string name="MargeletIconGreen">Зелёная</string>
++    <string name="MargeletIconGreen">Яичная (Жёлтая)</string>
 +    <string name="MargeletIconNight">Ночная</string>
 +    <string name="MargeletIconLavender">Лавандовая</string>
 +    <string name="MargeletIconSand">Песочная</string>
-+    <string name="MargeletIconSea">Морская</string>
++    <string name="MargeletIconSea">Белок (Белая)</string>
 +    <string name="MargeletIconRose">Розовая</string>
-+    <string name="MargeletCatAddYours">Хочешь свою кошку в Margy? Напиши @narezany</string>
-+    <string name="MargeletCatAskText">Привет! Хочу добавить свою кошку в Margy. Описание: </string>
++    <string name="MargeletCatAddYours">Хочешь пасхалку в YaicaGram? Напиши @desrteagle</string>
++    <string name="MargeletCatAskText">Привет! Хочу предложить пасхалку в YaicaGram: </string>
 +    <string name="MargeletCatAskTail"> — фото прикладываю.</string>
 +    <string name="MargeletCatOne">грецкий орех</string>
 +    <string name="MargeletCatTwo">ыжвдвдыбабв😡😡😡</string>
@@ -26974,23 +26974,23 @@ index 24c562920..2d8225dd3 100644
 +    <string name="MargeletGiftsAbout">Подарки, убранные из каталога, дописываются в конец списка. Покупку всё равно подтверждает сервер.</string>
 +    <string name="MargeletGiftsAuthor">Автор приёма: @binbash_0</string>
 +    <string name="MargeletSource">Исходный код</string>
-+    <string name="MargeletSourceInfo">github.com/narezany/Margelet</string>
++    <string name="MargeletSourceInfo">github.com/bodayse4real/YaicaGram</string>
 +    <string name="MargeletProfiles">Профили</string>
 +    <string name="MargeletProfilesInfo">Что ещё показывать в профиле</string>
 +    <string name="MargeletShowIds">Показывать айди</string>
 +    <string name="MargeletShowIdsAbout">Строка с числовым айди в профилях людей, ботов, групп и каналов. Нажатие копирует.</string>
-+    <string name="MargeletBadgeTitle">Создатель Margy</string>
-+    <string name="MargeletBadgeAbout">Нарезанный сделал Margy, поэтому у него такой значок.</string>
++    <string name="MargeletBadgeTitle">Создатель YaicaGram</string>
++    <string name="MargeletBadgeAbout">@desrteagle создал YaicaGram.</string>
 +    <string name="MargeletBadgeFriendTitle">Лучший друг нареза</string>
 +    <string name="MargeletBadgeFriendAbout">Лучший друг Нарезанного. Отсюда и значок.</string>
-+    <string name="MargeletBadgeChannelTitle">Канал Margy</string>
-+    <string name="MargeletBadgeChannelAbout">Единственный официальный канал Margy.</string>
-+    <string name="MargeletBadgeForumTitle">Форум Margy</string>
-+    <string name="MargeletBadgeForumAbout">Единственный официальный форум Margy.</string>
-+    <string name="MargeletBadgeRow">Значок Margy</string>
++    <string name="MargeletBadgeChannelTitle">Канал YaicaGram</string>
++    <string name="MargeletBadgeChannelAbout">Официальный канал YaicaGram (@xonesuper).</string>
++    <string name="MargeletBadgeForumTitle">Чат YaicaGram</string>
++    <string name="MargeletBadgeForumAbout">Официальный чат YaicaGram.</string>
++    <string name="MargeletBadgeRow">Значок YaicaGram</string>
 +    <string name="MargeletBadgeCatTitle">Кот в Margy</string>
 +    <string name="MargeletBadgeCatAbout">Кот этого человека живёт в приложении.</string>
-+    <string name="MargeletBadges">Значки Margy</string>
++    <string name="MargeletBadges">Значки YaicaGram</string>
 +    <string name="MargeletBadgesAbout">Значки у имён в профилях и в списке чатов.</string>
 +    <string name="MargeletCatFrom">Кот от %1$s</string>
 +    <string name="MargeletMarkupSize">Размер</string>
@@ -27022,8 +27022,8 @@ index 24c562920..2d8225dd3 100644
 +    <string name="MargeletCopyFormattedAbout">Пункт в меню сообщения. Обычное копирование кладёт голый текст, этот — с жирным, курсивом, ссылками и нашим оформлением.</string>
 +    <string name="MargeletOwnBubbles">Красить свои сообщения градиентом</string>
 +    <string name="MargeletOwnBubblesAbout">Ваши пузыри берут цвет вашего градиента профиля. Видите это только вы: цвет подменяется при показе, в сами сообщения ничего не дописывается.</string>
-+    <string name="MargeletAboutTitle">Что это</string>
-+    <string name="MargeletAboutText">Margy (ранее Margelet) — форк телеграма с кучей своего: оформление текста, теги у музыки, режим стримера, удалённые подарки и прочее.\n\nСделал @narezany.\n\nИ да: никогда не нажимай на название на главном экране и никогда не долби по кнопке «Чаты».</string>
++    <string name="MargeletAboutTitle">О приложении</string>
++    <string name="MargeletAboutText">YaicaGram — форк телеграма с расширенными настройками: оформление текста, теги у музыки, режим стримера, удалённые подарки, поддержка плагинов и прочее.\n\nСоздатель: @desrteagle\nКанал: @xonesuper\n\nИ да: никогда не нажимай на название на главном экране и никогда не долби по кнопке «Чаты».</string>
 +    <string name="MargeletMarkupWarnTitle">Своё оформление</string>
 +    <string name="MargeletMarkupWarnText">Это оформление понимает только Margy. У остальных текст придёт обычным, без него, плюс строка со ссылкой на форк в начале сообщения.</string>
 +    <string name="MargeletDonate">Донат</string>
@@ -27077,7 +27077,7 @@ index 24c562920..2d8225dd3 100644
 +    <string name="MargeletPluginUpdateOk">Заменить</string>
 +    <string name="MargeletPluginInstallAndRun">Поставить и включить</string>
 +    <string name="MargeletPluginTooOld">Плагину нужен Margy %1$s или новее. У вас %2$s.</string>
-+    <string name="MargeletPluginsRestart">Перезапустить Margy</string>
++    <string name="MargeletPluginsRestart">Перезапустить YaicaGram</string>
 +    <string name="MargeletHooks">Хуки методов (пока опытное)</string>
 +    <string name="MargeletHooksAbout">Плагины смогут подменять методы приложения, как модули Xposed. Кривой хук уронит его при запуске.</string>
 +    <string name="MargeletHooksWarn">Плагин сможет подменить любой метод приложения. Кривой хук способен уронить его прямо при запуске — и тогда выключить это будет негде, потому что настройки внутри того самого приложения.\n\nЗащита есть: если запуск с хуками не дожил до конца, следующий поднимется без них и скажет об этом. Но защита — это сетка, а не обещание.\n\nПриложение сейчас перезапустится.</string>
@@ -27118,8 +27118,8 @@ index d46834430..57d101095 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram Beta</string>
-+    <string name="AppName">Margelet</string>
-+    <string name="AppNameBeta">Margelet</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">Українська</string>
      <string name="English">Англійська</string>
      <string name="LanguageNameInEnglish">Ukrainian</string>
@@ -27131,7 +27131,7 @@ index 000000000..b6d3acce1
 @@ -0,0 +1,261 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<resources>
-+    <string name="MargeletSettings">分支设置</string>
++    <string name="MargeletSettings">YaicaGram 设置</string>
 +    <string name="MargeletInput">输入框</string>
 +    <string name="MargeletInputInfo">行数、字号、位置</string>
 +    <string name="MargeletSound">声音</string>
@@ -27239,7 +27239,7 @@ index 000000000..b6d3acce1
 +    <string name="MargeletIconSand">沙色</string>
 +    <string name="MargeletIconSea">海色</string>
 +    <string name="MargeletIconRose">玫瑰色</string>
-+    <string name="MargeletCatAddYours">想让自己的猫进 Margy？写给 @narezany</string>
++    <string name="MargeletCatAddYours">想让自己的彩蛋进 YaicaGram？写给 @desrteagle</string>
 +    <string name="MargeletCatAskText">你好！我想把我的猫加进 Margy。描述： </string>
 +    <string name="MargeletCatAskTail"> —— 照片附上。</string>
 +    <string name="MargeletCatOne">核桃</string>
@@ -27256,15 +27256,15 @@ index 000000000..b6d3acce1
 +    <string name="MargeletGiftsAbout">被撤下的礼物会加在列表末尾。购买仍然由服务器确认。</string>
 +    <string name="MargeletGiftsAuthor">这个办法的作者：@binbash_0</string>
 +    <string name="MargeletSource">源代码</string>
-+    <string name="MargeletSourceInfo">github.com/narezany/Margelet</string>
++    <string name="MargeletSourceInfo">github.com/bodayse4real/YaicaGram</string>
 +    <string name="MargeletProfiles">个人资料</string>
 +    <string name="MargeletProfilesInfo">资料页上还显示些什么</string>
 +    <string name="MargeletShowIds">显示 ID</string>
 +    <string name="MargeletShowIdsAbout">在人、机器人、群组和频道的资料里加一行数字 id。点一下复制。</string>
 +    <string name="MargeletBadgeTitle">Margy 作者</string>
-+    <string name="MargeletBadgeAbout">Margy 是 narezany 做的，所以徽章归他。</string>
-+    <string name="MargeletBadgeFriendTitle">narezany 最好的朋友</string>
-+    <string name="MargeletBadgeFriendAbout">narezany 最好的朋友。徽章由此而来。</string>
++    <string name="MargeletBadgeAbout">YaicaGram 是 @desrteagle 制作的。</string>
++    <string name="MargeletBadgeFriendTitle">YaicaGram 最好的朋友</string>
++    <string name="MargeletBadgeFriendAbout">YaicaGram 最好的朋友。徽章由此而来。</string>
 +    <string name="MargeletBadgeChannelTitle">Margy 频道</string>
 +    <string name="MargeletBadgeChannelAbout">唯一的官方 Margy 频道。</string>
 +    <string name="MargeletBadgeForumTitle">Margy 论坛</string>
@@ -27305,7 +27305,7 @@ index 000000000..b6d3acce1
 +    <string name="MargeletOwnBubbles">用我的渐变给我的消息上色</string>
 +    <string name="MargeletOwnBubblesAbout">你自己的气泡会取你资料页渐变的颜色。只有你看得到：颜色是在绘制时替换的，消息本身没有加任何东西。</string>
 +    <string name="MargeletAboutTitle">这是什么</string>
-+    <string name="MargeletAboutText">Margy（原 Margelet）是一个 Telegram 分支，塞了一堆自己的东西：文本格式、音乐标签、主播模式、下架的礼物等等。\n\n作者 @narezany。\n\n还有：千万别点主界面上的标题，也别猛戳“聊天”按钮。</string>
++    <string name="MargeletAboutText">YaicaGram 是一个 Telegram 分支：自定义输入框、音乐标签、主播模式、已删除礼物、Python 插件等。\n\n作者 @desrteagle，频道 @xonesuper。\n\n还有：千万别点主界面上的标题，也别猛戳“聊天”按钮。</string>
 +    <string name="MargeletMarkupWarnTitle">自有格式</string>
 +    <string name="MargeletMarkupWarnText">这种格式只有 Margy 认得。其他人收到的是没有格式的纯文本，外加消息开头一行指向本分支的字。</string>
 +    <string name="MargeletDonate">捐赠</string>
@@ -27415,8 +27415,8 @@ index ffa4d5663..6d7c511e7 100644
  <resources>
 -    <string name="AppName">Telegram</string>
 -    <string name="AppNameBeta">Telegram Beta</string>
-+    <string name="AppName">Margy</string>
-+    <string name="AppNameBeta">Margy</string>
++    <string name="AppName">YaicaGram</string>
++    <string name="AppNameBeta">YaicaGram</string>
      <string name="LanguageName">English</string>
      <string name="English">English</string>
      <string name="LanguageNameInEnglish">English</string>
@@ -27424,7 +27424,7 @@ index ffa4d5663..6d7c511e7 100644
      <string name="UnsupportedMessageTitle">Unsupported Message</string>
      <string name="UnsupportedMessageMessage">Update Telegram to view this message</string>
      <string name="UnsupportedUpdate">Update</string>
-+    <string name="MargeletSettings">Fork settings</string>
++    <string name="MargeletSettings">YaicaGram settings</string>
 +    <string name="MargeletInput">Message field</string>
 +    <string name="MargeletInputInfo">Lines, text size, position</string>
 +    <string name="MargeletSound">Sound</string>
@@ -27532,7 +27532,7 @@ index ffa4d5663..6d7c511e7 100644
 +    <string name="MargeletIconSand">Sand</string>
 +    <string name="MargeletIconSea">Sea</string>
 +    <string name="MargeletIconRose">Rose</string>
-+    <string name="MargeletCatAddYours">Want your cat in Margy? Write to @narezany</string>
++    <string name="MargeletCatAddYours">Want an easter egg in YaicaGram? Write to @desrteagle</string>
 +    <string name="MargeletCatAskText">Hi! I want to add my cat to Margy. Description: </string>
 +    <string name="MargeletCatAskTail"> — photo attached.</string>
 +    <string name="MargeletCatOne">walnut</string>
@@ -27549,7 +27549,7 @@ index ffa4d5663..6d7c511e7 100644
 +    <string name="MargeletGiftsAbout">Gifts taken out of the catalog are added to the end of the list. The purchase is still confirmed by the server.</string>
 +    <string name="MargeletGiftsAuthor">Author of the trick: @binbash_0</string>
 +    <string name="MargeletSource">Source code</string>
-+    <string name="MargeletSourceInfo">github.com/narezany/Margelet</string>
++    <string name="MargeletSourceInfo">github.com/bodayse4real/YaicaGram</string>
 +    <string name="MargeletProfiles">Profiles</string>
 +    <string name="MargeletProfilesInfo">What else to show on a profile page</string>
 +    <string name="MargeletShowIds">Show ID</string>
@@ -27756,7 +27756,7 @@ index 96dbbbf02..f0dcbad4a 100644
              jniDebuggable false
              signingConfig signingConfigs.release
 -            applicationIdSuffix ".web"
-+            // Суффикс убран: имя пакета теперь наше целиком, cat.narezany.margelet,
++            // Суффикс убран: имя пакета теперь наше целиком, cat.bodayse.yaicagram,
 +            // и приписка про веб-версию телеграма к нему не относится.
              minifyEnabled true
              multiDexEnabled true
@@ -39619,7 +39619,7 @@ index 38299bed6..ca44a3137 100644
 +APP_VERSION_CODE=7066
  APP_VERSION_NAME=12.10.1
 -APP_PACKAGE=org.telegram.messenger
-+APP_PACKAGE=cat.narezany.margelet
++APP_PACKAGE=cat.bodayse.yaicagram
  IS_PRIVATE=false
  RELEASE_KEY_PASSWORD=android
  RELEASE_KEY_ALIAS=androidkey

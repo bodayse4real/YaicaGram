@@ -54,7 +54,7 @@ public class MargeletCats {
     private static final int[] PHOTOS = {R.drawable.margelet_cat_1, R.drawable.margelet_cat_2};
     private static final int[] NAMES = {R.string.MargeletCatOne, R.string.MargeletCatTwo};
     /** Кто принёс кота. Порядок тот же, что у фотографий. */
-    private static final String[] FROM = {"@narezany", "@egorkagds"};
+    private static final String[] FROM = {"@desrteagle", "@egorkagds"};
 
     private static final String FILE = "cats.json";
     private static final String CACHE_KEY = "cats";
@@ -151,7 +151,7 @@ public class MargeletCats {
         return out;
     }
 
-    private static final String OWNER = "narezany";
+    private static final String OWNER = "desrteagle";
 
     /** Сколько окно не принимает нажатий после открытия. */
     private static final long DEAF_MS = 500;

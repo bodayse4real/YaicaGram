@@ -4,19 +4,17 @@ import org.telegram.messenger.FileLog;
 import org.telegram.ui.ActionBar.Theme;
 
 /**
- * Тема по умолчанию — тёмная с зелёным акцентом.
+ * Тема по умолчанию в YaicaGram — тёмная с фирменным яичным (жёлтым) акцентом.
  *
- * Своей темы не рисую: такая уже есть в самом телеграме. «Night» — чёрная
- * основа, а зелёный берётся её же готовым акцентом (0xff4ab841). Из
- * четырнадцати акцентов ночной темы зелёных два; второй, кроме зелёного,
- * красит сообщения в фиолетовый, поэтому взят этот.
+ * «Night» — глубокая тёмная основа, а жёлтый берётся готовым акцентом
+ * телеграма (яичный желток).
  *
  * Ставится ровно один раз, при первом запуске. Если человек потом выберет
  * другую тему, форк в этот выбор больше не лезет.
  */
 public class MargeletTheme {
 
-    private static final int GREEN_ACCENT_ID = 2;
+    private static final int EGG_ACCENT_ID = 3;
 
     public static void applyOnFirstLaunch() {
         try {
@@ -27,7 +25,7 @@ public class MargeletTheme {
             if (night == null) {
                 return;
             }
-            night.setCurrentAccentId(GREEN_ACCENT_ID);
+            night.setCurrentAccentId(EGG_ACCENT_ID);
             Theme.saveThemeAccents(night, true, false, true, false);
             Theme.applyTheme(night);
         } catch (Exception e) {

@@ -90,5 +90,5 @@ angles = [0,30,60,90,120,150,180,225,270,315]
 sheet = Image.new("RGB",(S*5, S*2),(20,20,22))
 for i,a in enumerate(angles):
     sheet.paste(render(pieces,a,S,mode), (S*(i%5), S*(i//5)))
-sheet.save(f"/tmp/claude-0/-home-user-TaioPlugin/59596ece-759e-529f-8f90-c807e90b950a/scratchpad/plane3d_{mode}.png")
+sheet.save(f"plane3d_{mode}.png")
 print("saved", mode)
