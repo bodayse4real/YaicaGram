@@ -99,7 +99,10 @@ git apply ../YaicaGram/patch/margelet.patch
 gradle :TMessagesProj_AppStandalone:assembleAfatStandalone
 ```
 
-Готовый APK сохраняется в `TMessagesProj_AppStandalone/build/outputs/apk/afat/standalone/`.
+## Авторы и разработчики (Contributors)
+
+- **[@desrteagle](https://t.me/desrteagle)** (GitHub: [@bodayse4real](https://github.com/bodayse4real)) — Ведущий разработчик и создатель проекта YaicaGram
+- **Google Gemini / Antigravity** — ИИ-соавтор и помощник по архитектуре
 
 ## Лицензия
 

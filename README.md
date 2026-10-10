@@ -97,7 +97,10 @@ git apply ../YaicaGram/patch/margelet.patch
 gradle :TMessagesProj_AppStandalone:assembleAfatStandalone
 ```
 
-The APK is generated in `TMessagesProj_AppStandalone/build/outputs/apk/afat/standalone/`.
+## Contributors
+
+- **[@desrteagle](https://t.me/desrteagle)** (GitHub: [@bodayse4real](https://github.com/bodayse4real)) — Lead Developer & Project Creator
+- **Google Gemini / Antigravity** — AI Co-Author & Architecture Assistant
 
 ## Licence
 
