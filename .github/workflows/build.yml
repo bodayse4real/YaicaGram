@@ -1,0 +1,119 @@
+name: Build YaicaGram APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Создать Release на GitHub?'
+        required: true
+        type: boolean
+        default: true
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          df -h
+
+      - name: Checkout YaicaGram repository
+        uses: actions/checkout@v4
+        with:
+          path: YaicaGram
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Set up Android SDK & NDK
+        run: |
+          echo "Installing NDK 27.2.12479018..."
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;27.2.12479018" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Clone Telegram Upstream
+        run: |
+          UPSTREAM=$(cat YaicaGram/patch/UPSTREAM | tr -d '\r\n')
+          echo "Upstream commit: $UPSTREAM"
+          git clone --filter=blob:none --no-checkout https://github.com/DrKLO/Telegram.git tg-src
+          cd tg-src
+          git checkout "$UPSTREAM"
+          git submodule update --init --recursive
+
+      - name: Apply YaicaGram Patch
+        run: |
+          cd tg-src
+          git apply ../YaicaGram/patch/margelet.patch
+
+      - name: Prepare local.properties
+        run: |
+          cd tg-src
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          echo "ndk.dir=$ANDROID_HOME/ndk/27.2.12479018" >> local.properties
+
+      - name: Build APK (assembleAfatStandalone)
+        run: |
+          cd tg-src
+          chmod +x gradlew
+          ./gradlew :TMessagesProj_AppStandalone:assembleAfatStandalone --no-daemon --stacktrace
+
+      - name: Prepare APK for Release
+        run: |
+          mkdir -p output
+          APK_PATH=$(find tg-src/TMessagesProj_AppStandalone/build/outputs/apk/afat/standalone/ -name "*.apk" | head -n 1)
+          if [ -z "$APK_PATH" ]; then
+            echo "Error: APK not found!"
+            exit 1
+          fi
+          echo "Found APK at: $APK_PATH"
+          cp "$APK_PATH" output/YaicaGram-0.99.30.apk
+          ls -lh output/
+
+      - name: Upload APK to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: YaicaGram-0.99.30-apk
+          path: output/YaicaGram-0.99.30.apk
+
+      - name: Publish to GitHub Releases
+        if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.create_release == true)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name || 'v0.99.30' }}
+          name: YaicaGram ${{ github.ref_name || 'v0.99.30' }}
+          body: |
+            ### YaicaGram 0.99.30 (Pre-release 1.0.30)
+            
+            Форк Telegram для Android на базе версии 12.10.1 с расширенными настройками и оформлением:
+            - **Фирменная яичная тема:** Тёмная основа с тёплым жёлтым акцентом яичного желтка (`#FFD54F`).
+            - **Пакет:** `cat.bodayse.yaicagram` (устанавливается параллельно с официальным Telegram).
+            - **Поле ввода сообщений:** растёт от 2 до 15 строк или на весь экран («макс.»).
+            - **Музыкальные теги:** правка названия, исполнителя и обложки прямо на телефоне.
+            - **Режим стримера:** скрытие номеров телефонов и юзернейма.
+            - **Удалённые подарки:** доступ к подаркам, снятым с витрины.
+            - **Встроенный WebSocket-прокси:** прямое соединение с дата-центрами Telegram.
+            - **Плагины на Python (.marp):** поддержка расширений и конвертация плагинов exteraGram.
+            - **Пасхалки:** яичный звук и реакция при нажатии на заголовок, скрытый экран по 7 нажатиям на вкладку «Чаты».
+            
+            **Создатель:** [@desrteagle](https://t.me/desrteagle)
+            **Канал:** [@xonesuper](https://t.me/xonesuper)
+          files: output/YaicaGram-0.99.30.apk
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
