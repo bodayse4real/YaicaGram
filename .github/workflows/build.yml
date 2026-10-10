@@ -81,26 +81,29 @@ jobs:
             exit 1
           fi
           echo "Found APK at: $APK_PATH"
-          cp "$APK_PATH" output/YaicaGram-0.99.31.apk
+          VERSION=$(python3 -c "import json; print(json.load(open('YaicaGram/version.json'))['version'])")
+          echo "Building version: $VERSION"
+          cp "$APK_PATH" "output/YaicaGram-${VERSION}.apk"
           cp "$APK_PATH" output/YaicaGram.apk
           ls -lh output/
 
       - name: Upload APK to Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: YaicaGram-0.99.31-apk
-          path: output/YaicaGram-0.99.31.apk
+          name: YaicaGram-apk
+          path: output/YaicaGram-*.apk
 
       - name: Publish to GitHub Releases
         if: startsWith(github.ref, 'refs/tags/') || (github.event_name == 'workflow_dispatch' && inputs.create_release == true)
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name || 'v0.99.31' }}
-          name: YaicaGram ${{ github.ref_name || 'v0.99.31' }}
+          tag_name: ${{ github.ref_name || 'v0.99.32' }}
+          name: YaicaGram ${{ github.ref_name || 'v0.99.32' }}
           body: |
-            ### YaicaGram 0.99.31 (Pre-release 1.0.31)
+            ### YaicaGram 0.99.32 (Pre-release 1.0.32)
             
             Форк Telegram для Android на базе версии 12.10.1 с расширенными настройками и оформлением:
+            - **Автоотключение прокси при активном VPN:** встроенный WebSocket-прокси теперь автоматически приостанавливается при включенном VPN и возобновляется при его отключении (устранена проблема с зависанием кнопки входа).
             - **Встроенный WebSocket-прокси «из коробки»:** включен по умолчанию для мгновенного входа и обхода блокировок без сторонних VPN.
             - **Фирменная яичная тема:** Тёмная основа с тёплым жёлтым акцентом яичного желтка (`#FFD54F`).
             - **Пакет:** `cat.bodayse.yaicagram` (устанавливается параллельно с официальным Telegram).
@@ -114,7 +117,7 @@ jobs:
             **Создатель:** [@desrteagle](https://t.me/desrteagle)
             **Канал:** [@xonesuper](https://t.me/xonesuper)
           files: |
-            output/YaicaGram-0.99.31.apk
+            output/YaicaGram-*.apk
             output/YaicaGram.apk
           draft: false
           prerelease: false

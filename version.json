@@ -1,7 +1,7 @@
 {
-  "version": "0.99.31",
-  "apk": "https://github.com/bodayse4real/YaicaGram/releases/download/v0.99.31/YaicaGram-0.99.31.apk",
-  "about": "YaicaGram 0.99.31 (1.0.31): Built-in WebSocket proxy enabled by default for instant connection without VPN in Russia.",
-  "about_ru": "Пререлиз YaicaGram 1.0.31: Встроенный WebSocket-прокси включен по умолчанию для мгновенного входа и работы без VPN в РФ.",
-  "about_zh": "YaicaGram 预发布 1.0.31：默认启用内置 WebSocket 代理，无需 VPN 即可即时连接与登录。"
+  "version": "0.99.32",
+  "apk": "https://github.com/bodayse4real/YaicaGram/releases/download/v0.99.32/YaicaGram-0.99.32.apk",
+  "about": "YaicaGram 0.99.32 (1.0.32): Auto-disable built-in WebSocket proxy when VPN is active to prevent login/network conflicts.",
+  "about_ru": "Пререлиз YaicaGram 1.0.32: Автоматическое отключение встроенного WebSocket-прокси при активном VPN для устранения сбоев входа в аккаунт.",
+  "about_zh": "YaicaGram 预发布 1.0.32：当 VPN 处于活动状态时自动禁用内置 WebSocket 代理，解决登录和网络冲突问题。"
 }
