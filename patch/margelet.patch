@@ -11456,7 +11456,7 @@ index dc63e5e28..0a19792e9 100644
          if (BuildVars.LOGS_ENABLED) {
              FileLog.d(helloWorld);
              FileLog.d("app start time = " + (startTime = SystemClock.elapsedRealtime()));
-@@ -353,6 +362,17 @@ public class ApplicationLoader extends Application {
+@@ -353,6 +362,15 @@ public class ApplicationLoader extends Application {
  
          LauncherIconController.tryFixLauncherIconIfNeeded();
          ProxyRotationController.init();
