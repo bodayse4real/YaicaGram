@@ -11331,14 +11331,12 @@ index dc63e5e28..0a19792e9 100644
          LauncherIconController.tryFixLauncherIconIfNeeded();
          ProxyRotationController.init();
 +
-+        // Встроенный прокси поднимаем при каждом запуске заново: порт у него
-+        // свободный, а не заранее выбранный, и от запуска к запуску меняется.
-+        // Записать его один раз в настройки и понадеяться нельзя — на
-+        // следующем запуске телеграм стучался бы в никуда.
++        // Встроенный прокси: запускаем автоуправление, которое само решает,
++        // нужен ли он сейчас. С VPN-ом прокси не нужен — человек и так
++        // попадает в телеграм; без VPN-а прокси поднимется. При смене VPN
++        // переключается на лету.
 +        try {
-+            if (org.telegram.margelet.MargeletConfig.proxyEnabled()) {
-+                org.telegram.margelet.MargeletProxy.enable(true);
-+            }
++            org.telegram.margelet.MargeletProxy.autoManage();
 +        } catch (Throwable ignored) {
 +        }
      }

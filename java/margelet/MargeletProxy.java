@@ -96,25 +96,155 @@ public class MargeletProxy {
     }
 
     /**
-     * Включить или выключить. Включение поднимает релей и прописывает его в
-     * те же настройки соединения, которыми телеграм пользуется для любого
-     * прокси, — своего пути в обход у нас нет и не надо.
+     * Включить или выключить. Включение запускает автоуправление: прокси
+     * поднимется, только если VPN не обнаружен. С VPN-ом он не нужен —
+     * человек и так попадает в телеграм.
      */
     public static void enable(boolean on) {
         if (on) {
-            if (!start()) {
-                MargeletConfig.setProxyEnabled(false);
-                return;
-            }
             MargeletConfig.setProxyEnabled(true);
-            ConnectionsManager.setProxySettings(true, "127.0.0.1", port(), "", "",
-                    MargeletObfuscation.hex(secret()));
+            autoManage();
         } else {
             MargeletConfig.setProxyEnabled(false);
             ConnectionsManager.setProxySettings(false, "", 0, "", "", "");
             stop();
+            unregisterVpnCallback();
         }
     }
+
+    // --- автоуправление: включаем и выключаем по наличию VPN ---
+
+    private static android.net.ConnectivityManager.NetworkCallback vpnCallback;
+
+    /**
+     * Есть ли активный VPN.
+     *
+     * На этом строится автоуправление: с VPN-ом прокси не нужен, человек и
+     * так попадает куда угодно; без VPN-а прокси нужен, иначе телеграм не
+     * поднимется.
+     */
+    public static boolean isVpnActive() {
+        try {
+            final android.net.ConnectivityManager cm = (android.net.ConnectivityManager)
+                    org.telegram.messenger.ApplicationLoader.applicationContext
+                            .getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
+            if (cm == null) return false;
+            if (android.os.Build.VERSION.SDK_INT >= 23) {
+                final android.net.Network active = cm.getActiveNetwork();
+                if (active == null) return false;
+                final android.net.NetworkCapabilities caps = cm.getNetworkCapabilities(active);
+                return caps != null && caps.hasTransport(
+                        android.net.NetworkCapabilities.TRANSPORT_VPN);
+            }
+            // До 23 API getActiveNetwork нет — смотрим все сети.
+            for (android.net.Network net : cm.getAllNetworks()) {
+                final android.net.NetworkCapabilities caps = cm.getNetworkCapabilities(net);
+                if (caps != null && caps.hasTransport(
+                        android.net.NetworkCapabilities.TRANSPORT_VPN)) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
+    /**
+     * Автоуправление прокси: включаем без VPN, выключаем с VPN.
+     *
+     * Зовётся при запуске приложения и при явном включении в настройках.
+     * Ставит наблюдателя за сетью, который переключает прокси на лету:
+     * включил VPN — прокси уснул, выключил — проснулся.
+     */
+    public static void autoManage() {
+        if (!MargeletConfig.proxyEnabled()) {
+            return;
+        }
+        syncWithVpn();
+        registerVpnCallback();
+    }
+
+    /**
+     * Привести состояние прокси в соответствие с наличием VPN.
+     *
+     * VPN есть — прокси останавливаем: два обхода одновременно только мешают.
+     * VPN нет — прокси поднимаем: без него телеграм не достучится до
+     * дата-центра.
+     */
+    private static synchronized void syncWithVpn() {
+        if (!MargeletConfig.proxyEnabled()) {
+            return;
+        }
+        if (isVpnActive()) {
+            if (working) {
+                ConnectionsManager.setProxySettings(false, "", 0, "", "", "");
+                stop();
+                MargeletPluginHost.log("прокси", "приостановлен: обнаружен VPN", false);
+            }
+        } else {
+            if (!working) {
+                if (!start()) {
+                    return;
+                }
+                ConnectionsManager.setProxySettings(true, "127.0.0.1", port(), "", "",
+                        MargeletObfuscation.hex(secret()));
+                MargeletPluginHost.log("прокси", "включён: VPN не обнаружен", false);
+            }
+        }
+    }
+
+    private static void registerVpnCallback() {
+        if (android.os.Build.VERSION.SDK_INT < 24) {
+            return;
+        }
+        try {
+            final android.net.ConnectivityManager cm = (android.net.ConnectivityManager)
+                    org.telegram.messenger.ApplicationLoader.applicationContext
+                            .getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
+            if (cm == null) return;
+            // Не ставим второго наблюдателя: два — это два вызова syncWithVpn
+            // на каждое событие, а второй может увидеть мир не таким, каким
+            // его оставил первый.
+            unregisterVpnCallback(cm);
+            vpnCallback = new android.net.ConnectivityManager.NetworkCallback() {
+                @Override
+                public void onAvailable(android.net.Network network) {
+                    org.telegram.messenger.AndroidUtilities.runOnUIThread(
+                            MargeletProxy::syncWithVpn);
+                }
+                @Override
+                public void onLost(android.net.Network network) {
+                    org.telegram.messenger.AndroidUtilities.runOnUIThread(
+                            MargeletProxy::syncWithVpn);
+                }
+            };
+            cm.registerDefaultNetworkCallback(vpnCallback);
+        } catch (Throwable t) {
+            FileLog.e(t);
+        }
+    }
+
+    private static void unregisterVpnCallback() {
+        try {
+            final android.net.ConnectivityManager cm = (android.net.ConnectivityManager)
+                    org.telegram.messenger.ApplicationLoader.applicationContext
+                            .getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
+            unregisterVpnCallback(cm);
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static void unregisterVpnCallback(android.net.ConnectivityManager cm) {
+        if (vpnCallback != null && cm != null) {
+            try {
+                cm.unregisterNetworkCallback(vpnCallback);
+            } catch (Throwable ignored) {
+            }
+            vpnCallback = null;
+        }
+    }
+
 
     /**
      * Предложить прокси тому, у кого телеграм не подключается.
